@@ -33,7 +33,7 @@ Serial_LCD_SparkFun::Serial_LCD_SparkFun() {
 	specialCommand(LCD_SET4LINE);
 	_numchars = LCD_20CHAR;
 	specialCommand(LCD_SET20CHAR);
-	_rowoffset = 0;
+	_rowoffset = 1;
 }
 
 /* Initialize.. not used trying to implement all display sizes
@@ -156,7 +156,7 @@ void Serial_LCD_SparkFun::setCursor(int row, int col){
 		{ 0x00, 0x40, 0x10, 0x50 },
 		{ 0x00, 0x40, 0x14, 0x54 }
 	};
-	if((row > 0 && row < 3) && (col > 0 && col < 17)){
+	if((row > 0 && row < 5) && (col > 0 && col < 21)){
            command(LCD_SETDDRAMADDR | ((col - 1) + row_offsets[_rowoffset][(row - 1)]));
 	}
 }
